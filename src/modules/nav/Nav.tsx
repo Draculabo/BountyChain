@@ -1,5 +1,7 @@
 import Link from 'next/link';
 
+import { ConnectButton } from '@mysten/dapp-kit';
+
 const Nav = () => {
   return (
     <header className="border-b">
@@ -16,9 +18,7 @@ const Nav = () => {
           <a href="#" className="text-muted-foreground hover:text-primary">
             语言切换
           </a>
-          <a href="#" className="text-muted-foreground hover:text-primary">
-            登录
-          </a>
+          <ConnectButton />
           <Link href="/message" className="text-muted-foreground hover:text-primary">
             消息
           </Link>

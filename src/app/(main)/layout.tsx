@@ -1,33 +1,18 @@
 'use client';
 
-// import {
-//   createNetworkConfig,
-//   SuiClientProvider,
-//   WalletProvider,
-// } from "@mysten/dapp-kit";
-// import { getFullnodeUrl } from "@mysten/sui/client";
-// import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import Nav from '@/modules/nav/Nav';
+import { SuiClientProvider, WalletProvider, createNetworkConfig } from '@mysten/dapp-kit';
 import '@mysten/dapp-kit/dist/index.css';
+import { getFullnodeUrl } from '@mysten/sui/client';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+
 import './globals.css';
 
-import { Geist, Geist_Mono } from 'next/font/google';
-
-import Nav from '@/modules/nav/Nav';
-
-// const { networkConfig } = createNetworkConfig({
-//   localnet: { url: getFullnodeUrl("localnet") },
-//   mainnet: { url: getFullnodeUrl("mainnet") },
-// });
-// const queryClient = new QueryClient();
-const geistSans = Geist({
-  variable: '--font-geist-sans',
-  subsets: ['latin'],
+const { networkConfig } = createNetworkConfig({
+  localnet: { url: getFullnodeUrl('localnet') },
+  mainnet: { url: getFullnodeUrl('mainnet') },
 });
-
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
-  subsets: ['latin'],
-});
+const queryClient = new QueryClient();
 
 export default function RootLayout({
   children,
@@ -36,15 +21,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        {/* <QueryClientProvider client={queryClient}>
+      <body>
+        <QueryClientProvider client={queryClient}>
           <SuiClientProvider networks={networkConfig} defaultNetwork="localnet">
-            <WalletProvider> */}
-        <Nav />
-        {children}
-        {/* </WalletProvider>
+            <WalletProvider enableUnsafeBurner>
+              <Nav />
+              {children}
+            </WalletProvider>
           </SuiClientProvider>
-        </QueryClientProvider> */}
+        </QueryClientProvider>
       </body>
     </html>
   );
