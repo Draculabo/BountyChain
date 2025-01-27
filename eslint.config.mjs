@@ -35,6 +35,7 @@ export default defineConfig(
       '@typescript-eslint/await-thenable': 'off',
       '@typescript-eslint/no-floating-promises': 'off',
       '@typescript-eslint/no-misused-promises': 'off',
+      'simple-import-sort/imports': 'off',
     },
   },
   {
@@ -58,3 +59,4 @@ export default defineConfig(
     },
   },
 )
+
